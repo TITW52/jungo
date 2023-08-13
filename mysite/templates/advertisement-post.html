@@ -4,6 +4,7 @@
 {% block title %} Разместить объявление {%endblock%}
 
 {%block content %}
+  <!-- панель навигации -->
   <ul class="nav nav-pills sticky-top bg-white nav-fill">
     <li class="nav-item">
       <a class="nav-link" href="{% url 'main-page'%}">
@@ -40,6 +41,8 @@
       </a>
     </li>
   </ul>
+
+  <!--Приветствие-->
   <div class="row">
     <div class="col" style="margin: 50px;">
       <div class="display-2">
@@ -47,49 +50,18 @@
       </div>
     </div>
   </div>
+
+  <!--Контейнер-->
   <div class="container">
-    <form method="post">
+    <!-- Форма -->
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
       <div class="row mb-3">
         <div class="col">
-          <label class="col-sm-4 col-form-label offset-4">Title</label>
-          <div class="col-sm-4 offset-4 w-25">
-            <input type="text" class="form-control form-control-lg">
-          </div>
+          {{ form.as_p }}
         </div>
       </div>
-      <div class="row mb-3">
-        <div class="col">
-          <label class="col-sm-4 col-form-label offset-4">Description</label>
-          <div class="col-sm-4 offset-4 w-25">
-              <label for="" class="form-label"></label>
-              <textarea class="form-control" name="" id="" rows="3"></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col">
-          <label class="col-sm-4 col-form-label offset-4">Photo</label>
-          <div class="col-sm-4 offset-4 w-25">
-            <input type="file" class="form-control form-control-lg">
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col">
-          <label class="col-sm-4 col-form-label offset-4">Price</label>
-          <div class="col-sm-4 offset-4 w-25">
-            <input type="text" class="form-control form-control-lg">
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col">
-          <div class="offset-4 w-25">
-            <input type="checkbox" class="form-check-input">
-            <label class="form-check-label">Auction</label>
-          </div>
-        </div>
-      </div>
+
       <div class="row mb-3 offset-sm-5">
         <div class="col">
           <button type="submit" class="btn btn-success">Принять</button>
@@ -98,5 +70,3 @@
     </form>
   </div>
   {% endblock %}
-</body>
-</html>
